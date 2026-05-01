@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings — Productivity Suite</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="compact">
+  <div class="container">
+    <h2>🚫 Website Blocker</h2>
+
+    <div class="card">
+      <input data-testid="block-hostname-input" placeholder="Enter website (e.g., facebook.com)" />
+      <div style="height:12px"></div>
+      <button class="btn" data-testid="add-block-btn">+ Add to Blocklist</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 12px 0; font-size:13px; color:#667eea;">Blocked Websites</h3>
+      <ul data-testid="blocked-sites-list"></ul>
+      <div style="height:12px"></div>
+      <button class="btn" data-testid="export-data-btn">📥 Export Data</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

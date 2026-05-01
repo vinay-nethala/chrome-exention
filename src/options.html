@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productivity Suite - Settings</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .options-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .options-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .options-header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    
+    .options-header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .options-content {
+      padding: 30px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .section-description {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #f5f5f5;
+      border-left: 3px solid #667eea;
+      border-radius: 4px;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    
+    label {
+      display: block;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+    
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 8px;
+    }
+    
+    button {
+      padding: 10px 16px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button.secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+    
+    button.secondary:hover {
+      background: #e0e0e0;
+    }
+    
+    button.danger {
+      background: #e74c3c;
+    }
+    
+    button.danger:hover {
+      background: #c0392b;
+    }
+    
+    .blocked-sites-list {
+      list-style: none;
+      margin: 16px 0 0 0;
+    }
+    
+    .site-item {
+      padding: 12px;
+      background: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .site-item-text {
+      flex: 1;
+      font-size: 13px;
+      word-break: break-all;
+      color: #333;
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+    
+    .site-item button {
+      flex: none;
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 30px;
+      color: #999;
+      font-size: 13px;
+    }
+    
+    .empty-state-icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #eee;
+      margin: 30px 0;
+    }
+    
+    .success-message {
+      display: none;
+      padding: 12px;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .success-message.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="options-card">
+      <div class="options-header">
+        <h1>⚙️ Settings</h1>
+        <p>Manage your Productivity Suite preferences</p>
+      </div>
+      
+      <div class="options-content">
+        <!-- Success Message -->
+        <div id="success-message" class="success-message">
+          ✓ Settings saved successfully
+        </div>
+        
+        <!-- Website Blocker Section -->
+        <div class="section">
+          <div class="section-title">🚫 Website Blocker</div>
+          <div class="section-description">
+            Add hostnames to block access to specific websites. The extension will redirect blocked sites to a notice page.
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="text" 
+              id="block-hostname-input" 
+              data-testid="block-hostname-input"
+              placeholder="e.g., facebook.com, twitter.com"
+            />
+          </div>
+          
+          <div class="button-group">
+            <button id="add-block-btn" data-testid="add-block-btn">Add to Blocklist</button>
+            <button id="clear-all-btn" class="danger">Clear All</button>
+          </div>
+          
+          <div id="blocked-sites-container">
+            <ul id="blocked-sites-list" class="blocked-sites-list" data-testid="blocked-sites-list"></ul>
+          </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- Data Management Section -->
+        <div class="section">
+          <div class="section-title">💾 Data Management</div>
+          <div class="section-description">
+            Export your notes, sessions, and blocklist to a JSON file for backup or migration.
+          </div>
+          
+          <div class="button-group">
+            <button id="export-all-btn" data-testid="export-data-btn">📥 Export All Data</button>
+            <button id="import-all-btn" class="secondary">📤 Import Data</button>
+            <button id="clear-all-data-btn" class="danger">🗑️ Clear All Data</button>
+          </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- About Section -->
+        <div class="section">
+          <div class="section-title">ℹ️ About</div>
+          <div class="section-description">
+            Productivity Suite v1.0.0 - Your complete browser productivity companion
+          </div>
+          <p style="font-size: 12px; color: #999;">
+            © 2026 Productivity Suite. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="import-file" accept=".json" style="display: none;" />
+  <script src="options.js"></script>
+</body>
+</html>

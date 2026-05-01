@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Productivity Suite Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Productivity Hub</h1>
+      <p class="subtitle">Your personal space to stay focused and accomplish more</p>
+    </header>
+
+    <main class="content">
+      <div class="card" data-testid="widget-notes">
+        <div class="card-header">
+          <div class="card-icon-wrapper">
+            <span class="card-icon">📝</span>
+          </div>
+          <h2>Your Notes</h2>
+        </div>
+        <div id="notes-container">
+          <textarea id="note-input" placeholder="Write a note..." rows="3" style="width:100%;margin-bottom:8px"></textarea>
+          <button id="add-note-btn" class="btn">Add Note</button>
+          <div id="notes-list" style="margin-top:16px"></div>
+        </div>
+      </div>
+      <div class="card" data-testid="widget-sessions">
+        <div class="card-header">
+          <div class="card-icon-wrapper alt">
+            <span class="card-icon">💾</span>
+          </div>
+          <h2>Saved Sessions</h2>
+        </div>
+        <div id="sessions-container">
+          <button id="save-session-btn" class="btn">Save Session</button>
+          <div id="sessions-list" style="margin-top:16px"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Productivity Suite</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="compact">
+  <div class="container">
+    <h2>📊 Quick Access</h2>
+
+    <button class="btn" data-testid="save-session-btn">💾 Save Session</button>
+
+    <div class="card" data-testid="sessions-list"></div>
+
+    <h3>📝 Notes</h3>
+    <div class="card">
+      <textarea data-testid="notes-textarea" placeholder="Write your notes here..."></textarea>
+      <div style="height:12px"></div>
+      <button class="btn" data-testid="save-notes-btn">✓ Save Notes</button>
+    </div>
+
+    <div style="height:12px"></div>
+    <button class="btn" data-testid="open-options-btn">⚙️ Settings</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "productivity-suite",
+  "version": "1.0",
+  "docker": true,
+  "run_command": "docker-compose up"
+}
